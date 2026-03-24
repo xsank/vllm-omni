@@ -39,6 +39,8 @@ class ForwardContext:
     # Tracks the depth of SP sharding - incremented on shard, decremented on gather
     # Used by attention layers to determine if SP communication should be enabled
     _sp_shard_depth: int = 0
+    
+    sp_pad_info: dict[str, tuple[int, int]] | None = None
 
     @property
     def sp_active(self) -> bool:
