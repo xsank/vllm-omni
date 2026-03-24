@@ -459,6 +459,7 @@ class SequenceParallelGatherHook(ModelHook):
 
         # Check if padding was applied during split
         original_seq_len = None
+        ctx = None
         if is_forward_context_available():
             ctx = get_forward_context()
             original_seq_len = ctx.sp_original_seq_len
