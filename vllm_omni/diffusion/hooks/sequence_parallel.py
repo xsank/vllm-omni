@@ -396,17 +396,17 @@ class SequenceParallelSplitHook(ModelHook):
         # Attention layers will create masks dynamically using this info
         if is_forward_context_available():
             ctx = get_forward_context()
-            
+
             if sp_input.pad_key:
                 if ctx.sp_pad_info is None:
                     ctx.sp_pad_info = {}
                 ctx.sp_pad_info[sp_input.pad_key] = (seq_len, pad_size)
-                    
+
             # Only set if not already set (first auto_pad tensor wins)
             if ctx.sp_original_seq_len is None:
                 ctx.sp_padding_size = pad_size
                 ctx.sp_original_seq_len = seq_len
-                    
+
                 logger.debug(
                     f"Auto-padded sequence from {seq_len} to {padded_seq_len} "
                     f"(pad_size={pad_size}, world_size={world_size}, dim={dim})"
@@ -478,7 +478,7 @@ class SequenceParallelGatherHook(ModelHook):
 
             # Gather from all ranks
             gathered = sp_gather(x, spm.gather_dim, validate=False)
-            
+
             if ctx is not None:
                 if spm.pad_key is not None:
                     if ctx.sp_pad_info is not None and spm.pad_key in ctx.sp_pad_info:

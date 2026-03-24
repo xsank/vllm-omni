@@ -42,8 +42,7 @@ class ForwardContext:
 
     # Different sequence streams (e.g. video
     # vs audio) can register their own keys so that their respective gather
-    # hooks trim the correct amount of padding without interfering with each
-    # other.
+    # hooks trim the correct amount of padding without interfering with each other.
     sp_pad_info: dict[str, tuple[int, int]] | None = None
 
     @property

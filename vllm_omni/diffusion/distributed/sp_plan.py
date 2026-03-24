@@ -275,10 +275,11 @@ class SequenceParallelOutput:
 
     def __repr__(self) -> str:
         return (
-            f"SequenceParallelOutput(gather_dim={self.gather_dim}, " 
+            f"SequenceParallelOutput(gather_dim={self.gather_dim}, "
             f"expected_dims={self.expected_dims}), "
             f"pad_key={self.pad_key!r})"
         )
+
 
 @dataclass(frozen=True)
 class SequenceParallelPartialInput:
